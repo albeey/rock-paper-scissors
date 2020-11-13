@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock, Paper, Scissors</title>
+</head>
+<body>
+    <script>
+        function computerPlay() {
+            // Create array containing 3 elements: rock, paper, scissors
+            const rockPaperScissors = ["Rock", "Paper", "Scissors"];
+            // Create a variable that will hold a random element from the array
+            const randomChoice = rockPaperScissors[Math.floor(Math.random() * 3)];
+            // Return variable
+            return randomChoice;
+        }
+
+        function playRound (playerSelection, computerSelection = computerPlay()) {
+            // capitalize first letter of player selection
+            playerSelection = playerSelection[0].toUpperCase() + playerSelection.slice(1).toLowerCase();
+            // comparasion
+                if (playerSelection === computerSelection) {
+                    // if playerSelection and computerSelection are the same, its a tie
+                    return "It's a Tie!"
+                } else if ((playerSelection === "Rock" && computerSelection === "Scissors") ||
+                           (playerSelection === "Paper" && computerSelection === "Rock") ||
+                           (playerSelection === "Scissors" && computerSelection === "Paper")) {
+                // if player rock & comp scissors, player wins
+                // if player paper & comp rock, player win
+                // if player scissor & comp paper player win
+                    return `You Win! ${playerSelection} beats ${computerSelection}`;
+                } else {
+                // else computer wins
+                    return `You Lose! ${computerSelection} beats ${playerSelection}`;
+                }
+        }
+
+        function game() {
+            // declare variable to hold result of playRound, not yet assigned 
+            let roundResult;
+            // declare variabble for user score, assign 0
+            let playerScore = 0;
+            // delcare variable for computer score, assign 0
+            let computerScore = 0;
+
+            // loop until rounds is 5
+            for (let i = 0; i < 5; i++) {
+                // declare and assing var for userinput
+                let playerChoice = prompt("Rock, Paper, Scissors?");
+                //assign playRound to variable
+                roundResult = playRound(playerChoice);
+                    // if variable includes word "Win" add 1 point to user score, console log variable
+                if (roundResult.includes("Win")) {
+                    playerScore++;
+                    console.log(roundResult);
+                    // if varible includes word "Lose" add 1 point to computer score, console log variable
+                } else if (roundResult.includes("Lose")) {
+                    computerScore++;
+                    console.log(roundResult);
+                } else {
+                    // else is a tie, console log variable
+                    console.log(roundResult);
+                }
+                // empty variable
+                roundResult = undefined;
+            }
+
+            // function to print scores
+            const printScore = () => `\nPlayer: ${playerScore}\nComputer: ${computerScore}`;
+
+            // Print Winner
+                // if playerScore > computerScore player wins
+            if (playerScore > computerScore) {
+                return "Player Wins!" + printScore();
+            } else if (playerScore < computerScore) {
+                // if playerscore is less than computerscore computer wins
+                return "Computer Wins!" + printScore();
+            } else {
+                // else is a tie
+                return "It's a tie!" + printScore();
+            }
+        }
+    </script>
+</body>
+</html>
