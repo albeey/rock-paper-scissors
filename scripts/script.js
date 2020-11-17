@@ -65,7 +65,7 @@ const playAgain = document.querySelector("#play-again")
 function gameOver() {
   gameOverOverlay.style.display = "block";
 
-  if (playerScore < computerScore) {
+  if (playerScore > computerScore) {
     resultMessage.textContent = "Great Job!";
     result.textContent = "You won";
   } else {
