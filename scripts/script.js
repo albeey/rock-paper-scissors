@@ -36,11 +36,11 @@ computersChoice.style.visibility = "hidden";
 function updateComputersChoice(compChoice) {
   const computersChoiceImage = document.querySelector("#c-img");
   if (compChoice === "Rock") {
-    computersChoiceImage.src = "https://albeey.github.io/rock-paper-scissors/images/fist-emoji.png";
+    computersChoiceImage.src = "images/fist-emoji.png";
   } else if (compChoice === "Paper") {
-    computersChoiceImage.src = "https://albeey.github.io/rock-paper-scissors/images/hand-emoji.png";
+    computersChoiceImage.src = "images/hand-emoji.png";
   } else {
-    computersChoiceImage.src = "https://albeey.github.io/rock-paper-scissors/images/victory-emoji.png";
+    computersChoiceImage.src = "images/victory-emoji.png";
   }
 }
 
