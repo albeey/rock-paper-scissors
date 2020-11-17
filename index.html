@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock, Paper, Scissors</title>
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header id="header">
+    <h1 id="title">Rock, Paper, Scissors</h1>
+    <p id="description">Best of 5 wins!</p>
+  </header>
+
+  <div id="container">
+    <div id="selection-btns">
+      <button class="selection-btn" id="rock"><img src="images/fist-emoji.png" alt="rock"></button>
+      <button class="selection-btn" id="paper"><img src="images/hand-emoji.png" alt="paper"></button>
+      <button class="selection-btn" id="scissors"><img src="images/victory-emoji.png" alt="scissors"></button>
+    </div>
+
+    <div id="results">
+      <span id="results-title">Score</span>
+
+      <div id="user" class="result-element">
+        <span class="r-title">Player:</span>
+        <p id="user-score"></p>
+      </div>
+
+      <div id="round" class="result-element">
+        <span id="round-count"></span>
+        <span id="round-detail">Pick an option to start!</span>
+      </div>
+
+      <div id="computer" class="result-element">
+        <span class="r-title">Computer:</span>
+        <p id="comp-score"></p>
+      </div>
+    </div>
+
+    <div id="computers-choice">
+      <span>Computer's Choice: </span>
+      <img id="c-img" src="" alt="computer's choice">
+    </div>
+  </div>
+
+  <div id="game-over">
+    <div id="go-container">
+      <span id="result-message"></span>
+      <span id="result"></span>
+      <span id="score"></span>
+      <button id="play-again">Play Again</button>
+  </div>
+  </div>
+
+  <script src="scripts/script.js"></script>
+</body>
+</html>
