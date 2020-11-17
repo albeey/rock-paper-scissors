@@ -85,6 +85,7 @@ img {
   margin: auto;
   display: flex;
   flex-direction: column;
+  grid-area: round;
 }
 
 .result-element {
@@ -188,4 +189,45 @@ img {
 #play-again:hover {
   background-color: white;
   color: #fbbdbd;
+}
+
+@media (max-width: 576px) {
+  #container {
+    justify-content: center;
+  }  
+
+  #selection-btns {
+    width: 50%;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  #results {
+    margin-top: 10px;
+    width: 300px;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas: "score"
+                         "round"
+                         "details"
+                         "user-score"
+                         "comp-score";
+    text-align: center;
+  }
+
+  #computers-choice {
+    width: 100px;
+    justify-content: center;
+  }
+
+  #go-container {
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 2em;
+  }
+ 
 }

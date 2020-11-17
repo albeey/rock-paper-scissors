@@ -43,7 +43,6 @@ function updateComputersChoice(compChoice) {
     computersChoiceImage.src = "images/victory-emoji.png";
   }
 }
-
 // Its called right after opening hmtl file to update the score board
 scoreBoard();
 
