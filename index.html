@@ -6,10 +6,30 @@
 </head>
 <body>
   <script>
+
     function computerPlay() {
-      options = ["rock", "paper", "scissors"];
+      options = ["Rock", "Paper", "Scissors"];
       return options[Math.floor(Math.random() * options.length)];
     }
+
+    function playRound(playerSelection, computerSelection) {
+      let playerChoice = playerSelection[0].toUpperCase() + playerSelection.slice(1).toLowerCase();
+
+      if (playerChoice === computerSelection) {
+        return "It's a tie!";
+      } else if ((playerChoice === "Rock" && computerSelection !== "Paper") || (playerChoice === "Paper" && computerSelection !== "Scissors") || (playerChoice === "Scissors" && computerSelection !== "Rock")) {
+        return `You win! ${playerChoice} beats ${computerSelection}`;
+      }
+
+      return `You Lose! ${computerSelection} beats ${playerChoice}`;
+    }
+
+    const playerSelection = "roCk";
+    const computerSelection = computerPlay();
+
+    console.log(playRound(playerSelection, computerSelection))
+
+
   </script>
 </body>
 </html>
