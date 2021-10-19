@@ -2,9 +2,14 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Rock Paper Scissors</title>
+  <title>Rock, Paper, Scissors</title>
 </head>
 <body>
-  
+  <script>
+    function computerPlay() {
+      options = ["rock", "paper", "scissors"];
+      return options[Math.floor(Math.random() * options.length)];
+    }
+  </script>
 </body>
 </html>
