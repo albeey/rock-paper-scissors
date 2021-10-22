@@ -4,4 +4,4 @@ Project for [The Odin Project](https://www.theodinproject.com/)
 
 Rock, paper, scissors console game.
 
-[Live Preview](https://albeey.github.io/rock-paper-scissors-console/)
+[Live Preview](https://albeey.github.io/rock-paper-scissors/)
