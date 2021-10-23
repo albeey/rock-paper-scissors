@@ -15,13 +15,13 @@ function playRound(playerSelection, computerSelection) {
   return `You Lose! ${computerSelection} beats ${playerChoice}`;
 }
 
-function computeResult(resultString) {
+function getRoundWinner(resultString) {
+  resultString = resultString.toLowerCase();
+
   if (resultString.includes("win")) {
     return "player"
   } else if (resultString.includes("lose")) {
     return "computer"
-  } else {
-    return "tie"
   }
 }
 
@@ -35,35 +35,6 @@ function getWinner(playerScore, computerScore) {
   }
 }
 
-// function game() {
-//   let playerScore = 0;
-//   let computerScore = 0;
-
-//   for (let index = 0; index < 5; index++) {
-//     console.log(`ROUND: ${index + 1}`)
-
-//     const playerSelection = prompt("Player's choice: ");
-//     const computerSelection = computerPlay();
-
-//     const result = playRound(playerSelection, computerSelection);
-//     console.log(result);
-
-//     const roundWinner = computeResult(result);
-
-//     if (roundWinner === "player") {
-//       playerScore++;
-//     } else if (roundWinner === "computer") {
-//       computerScore++;
-//     }
-//   }
-
-//   const winner = getWinner(playerScore, computerScore);
-//   console.log(winner);
-//   console.log(`Player: ${playerScore} - Computer: ${computerScore}`);
-// }
-
-// game()
-
 function updateResults(roundResult) {
   const container = document.querySelector("#results");
   const result = document.createElement("p");
@@ -71,31 +42,48 @@ function updateResults(roundResult) {
   if (container.innerText != "") container.innerText = "";
 
   result.textContent = roundResult;
-
   container.appendChild(result);
 }
 
 function updateRound(currentRound) {
   const container = document.querySelector("#round");
   container.textContent = `Round ${currentRound}/5`
+  return currentRound + 1;
 }
 
-function game(choice, roundNumber) {
-  const userChoice = choice.textContent;
-  const round = playRound(userChoice, computerPlay());
+function updateScores(playerScore, computerScore){
+  const player = document.querySelector("#player-score");
+  const computer = document.querySelector("#computer-score");
 
-  updateResults(round);
+  player.textContent = `Player: ${playerScore}`;
+  computer.textContent = `Computer: ${computerScore}`;
 }
 
 const TOTAL_ROUNDS = 5;
-let roundNumber = 0;
+let currentRound = 0;
+
+let playerScore = 0;
+let computerScore = 0;
 
 const optionButtons = document.querySelectorAll(".option");
-
 optionButtons.forEach(button => {
   button.addEventListener("click", () => {
-    roundNumber++;
-    updateRound(roundNumber);
-    game(button, roundNumber);
+    currentRound++;
+    updateRound(currentRound);
+
+    const userChoice = button.textContent;
+    const roundResult = playRound(userChoice, computerPlay());
+    updateResults(roundResult)
+
+    const roundWinner = getRoundWinner(roundResult);
+    
+    // Update Score
+    if (roundWinner === "player") playerScore++;
+    if (roundWinner === "computer") computerScore++;
+    updateScores(playerScore, computerScore);
+
+    if (currentRound === TOTAL_ROUNDS) console.log("game over");
+
+
   });
 });
