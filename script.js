@@ -75,14 +75,27 @@ function updateResults(roundResult) {
   container.appendChild(result);
 }
 
-function game() {
-  const userChoice = this.textContent;
-
-  const round = playRound(userChoice, computerPlay());
-  updateResults(round)
+function updateRound(currentRound) {
+  const container = document.querySelector("#round");
+  container.textContent = `Round ${currentRound}/5`
 }
 
+function game(choice, roundNumber) {
+  const userChoice = choice.textContent;
+  const round = playRound(userChoice, computerPlay());
+
+  updateResults(round);
+}
+
+const TOTAL_ROUNDS = 5;
+let roundNumber = 0;
+
 const optionButtons = document.querySelectorAll(".option");
+
 optionButtons.forEach(button => {
-  button.addEventListener("click", game)
+  button.addEventListener("click", () => {
+    roundNumber++;
+    updateRound(roundNumber);
+    game(button, roundNumber);
+  });
 });
