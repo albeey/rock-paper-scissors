@@ -1,4 +1,3 @@
-
     function computerPlay() {
       const options = ["Rock", "Paper", "Scissors"];
       return options[Math.floor(Math.random() * options.length)];
@@ -36,31 +35,43 @@
       }
     }
 
+    // function game() {
+    //   let playerScore = 0;
+    //   let computerScore = 0;
+
+    //   for (let index = 0; index < 5; index++) {
+    //     console.log(`ROUND: ${index + 1}`)
+
+    //     const playerSelection = prompt("Player's choice: ");
+    //     const computerSelection = computerPlay();
+
+    //     const result = playRound(playerSelection, computerSelection);
+    //     console.log(result);
+
+    //     const roundWinner = computeResult(result);
+
+    //     if (roundWinner === "player") {
+    //       playerScore++;
+    //     } else if (roundWinner === "computer") {
+    //       computerScore++;
+    //     }
+    //   }
+
+    //   const winner = getWinner(playerScore, computerScore);
+    //   console.log(winner);
+    //   console.log(`Player: ${playerScore} - Computer: ${computerScore}`);
+    // }
+
+    // game()
+
     function game() {
-      let playerScore = 0;
-      let computerScore = 0;
+        const userChoice = this.textContent;
 
-      for (let index = 0; index < 5; index++) {
-        console.log(`ROUND: ${index + 1}`)
-
-        const playerSelection = prompt("Player's choice: ");
-        const computerSelection = computerPlay();
-
-        const result = playRound(playerSelection, computerSelection);
-        console.log(result);
-
-        const roundWinner = computeResult(result);
-
-        if (roundWinner === "player") {
-          playerScore++;
-        } else if (roundWinner === "computer") {
-          computerScore++;
-        }
-      }
-
-      const winner = getWinner(playerScore, computerScore);
-      console.log(winner);
-      console.log(`Player: ${playerScore} - Computer: ${computerScore}`);
+        const round = playRound(userChoice, computerPlay());
+        console.log(round);
     }
 
-    game()
+    const optionButtons = document.querySelectorAll(".option");
+    optionButtons.forEach(button => {
+      button.addEventListener("click", game)
+    })
