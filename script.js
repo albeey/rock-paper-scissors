@@ -48,7 +48,6 @@ function updateResults(roundResult) {
 function updateRound(currentRound) {
   const container = document.querySelector("#round");
   container.textContent = `Round ${currentRound}/5`
-  return currentRound + 1;
 }
 
 function updateScores(playerScore, computerScore){
@@ -82,8 +81,6 @@ optionButtons.forEach(button => {
     if (roundWinner === "computer") computerScore++;
     updateScores(playerScore, computerScore);
 
-    if (currentRound === TOTAL_ROUNDS) console.log("game over");
-
-
+    if (currentRound === TOTAL_ROUNDS) alert(getWinner(playerScore, computerScore));
   });
 });
