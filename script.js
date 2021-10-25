@@ -4,30 +4,33 @@ let currentRound = 0;
 let playerScore = 0;
 let computerScore = 0;
 
-const rock = document.querySelector("#rock");
-const paper = document.querySelector("#paper");
-const scissors = document.querySelector("#scissors");
-
-rock.addEventListener("click", game);
-paper.addEventListener("click", game);
-scissors.addEventListener("click", game);
+const optionButtons = document.querySelectorAll(".option");
+optionButtons.forEach(button => {
+  button.addEventListener("click", game);
+});
 
 function game() {
-    currentRound++;
-    updateRound(currentRound);
+    updateRound();
 
     const userChoice = this.textContent;
     const roundResult = playRound(userChoice, computerPlay());
     updateResults(roundResult)
 
     const roundWinner = getRoundWinner(roundResult);
-    
-    // Update Score
-    if (roundWinner === "player") playerScore++;
-    if (roundWinner === "computer") computerScore++;
-    updateScores(playerScore, computerScore);
+    updateScores(roundWinner);
 
-    if (currentRound === TOTAL_ROUNDS) alert(getWinner(playerScore, computerScore));
+    if (currentRound === TOTAL_ROUNDS) console.log(gameOver(playerScore, computerScore));
+}
+
+function updateRound() {
+  currentRound++;
+  const container = document.querySelector("#round");
+  container.textContent = `Round ${currentRound}/5`
+}
+
+function updateResults(roundResult) {
+  const container = document.querySelector("#results");
+  container.textContent = roundResult;
 }
 
 function computerPlay() {
@@ -41,10 +44,10 @@ function playRound(playerSelection, computerSelection) {
   if (playerChoice === computerSelection) {
     return "It's a tie!";
   } else if ((playerChoice === "Rock" && computerSelection !== "Paper") || (playerChoice === "Paper" && computerSelection !== "Scissors") || (playerChoice === "Scissors" && computerSelection !== "Rock")) {
-    return `You win! ${playerChoice} beats ${computerSelection}`;
+    return `You win!`;
   }
 
-  return `You Lose! ${computerSelection} beats ${playerChoice}`;
+  return `You Lose!`;
 }
 
 function getRoundWinner(resultString) {
@@ -57,7 +60,18 @@ function getRoundWinner(resultString) {
   }
 }
 
-function getWinner(playerScore, computerScore) {
+function updateScores(roundWinner){
+  if (roundWinner === "player") playerScore++;
+  if (roundWinner === "computer") computerScore++;
+
+  const player = document.querySelector("#player-score");
+  const computer = document.querySelector("#computer-score");
+
+  player.textContent = `Player: ${playerScore}`;
+  computer.textContent = `Computer: ${computerScore}`;
+}
+
+function gameOver(playerScore, computerScore) {
     if (playerScore > computerScore) {
     return "YOU WIN!"
   } else if (computerScore > playerScore) {
@@ -65,27 +79,4 @@ function getWinner(playerScore, computerScore) {
   } else {
     return "IT'S A TIE"
   }
-}
-
-function updateResults(roundResult) {
-  const container = document.querySelector("#results");
-  const result = document.createElement("p");
-
-  if (container.innerText != "") container.innerText = "";
-
-  result.textContent = roundResult;
-  container.appendChild(result);
-}
-
-function updateRound(currentRound) {
-  const container = document.querySelector("#round");
-  container.textContent = `Round ${currentRound}/5`
-}
-
-function updateScores(playerScore, computerScore){
-  const player = document.querySelector("#player-score");
-  const computer = document.querySelector("#computer-score");
-
-  player.textContent = `Player: ${playerScore}`;
-  computer.textContent = `Computer: ${computerScore}`;
 }
