@@ -27,17 +27,31 @@ body {
   margin-bottom: 6px;
 }
 
+/* CONTENT CONTAINER */
+
 #content {
   padding: 10px;
   display: flex;
   flex-direction: column;
   text-align: center;
-  width: 560px;
+  width: 570px;
 }
 
-/* BUTTONS HERE */
+/* BUTTONS */
 
-.result-title {
+#game-options {
+  margin-top: 10px;
+}
+
+.option {
+  border: 0;
+  background: none;
+  padding: 10px;
+}
+
+/* SCORE */
+
+.score-title {
   background: lightcyan;
   font-size: 24px;
   font-family: 'Fira Sans', sans-serif;

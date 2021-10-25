@@ -12,7 +12,7 @@ optionButtons.forEach(button => {
 function game() {
     updateRound();
 
-    const userChoice = this.textContent;
+    const userChoice = this.getAttribute("name");
     const roundResult = playRound(userChoice, computerPlay());
     updateResults(roundResult)
 
