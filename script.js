@@ -24,12 +24,12 @@ function game() {
 
 function updateRound() {
   currentRound++;
-  const container = document.querySelector("#round");
+  const container = document.querySelector("#round-counter");
   container.textContent = `Round ${currentRound}/5`
 }
 
 function updateResults(roundResult) {
-  const container = document.querySelector("#results");
+  const container = document.querySelector("#round-results");
   container.textContent = roundResult;
 }
 
@@ -67,12 +67,12 @@ function updateScores(roundWinner){
   const player = document.querySelector("#player-score");
   const computer = document.querySelector("#computer-score");
 
-  player.textContent = `Player: ${playerScore}`;
-  computer.textContent = `Computer: ${computerScore}`;
+  player.textContent = playerScore;
+  computer.textContent = computerScore;
 }
 
 function gameOver(playerScore, computerScore) {
-    if (playerScore > computerScore) {
+  if (playerScore > computerScore) {
     return "YOU WIN!"
   } else if (computerScore > playerScore) {
     return "YOU LOSE"

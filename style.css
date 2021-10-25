@@ -6,6 +6,9 @@
 body {
   font-family: 'Merriweather', serif;
   background-color: #ffefef;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #header {
@@ -13,6 +16,7 @@ body {
   color: white;
   text-align: center;
   padding: 15px;
+  width: 100%;
 }
 
 .title {
@@ -23,7 +27,42 @@ body {
   margin-bottom: 6px;
 }
 
-.subtitle {
-  font-weight: 600;
-  color: ghostwhite;
+#content {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 560px;
+}
+
+/* BUTTONS HERE */
+
+.result-title {
+  background: lightcyan;
+  font-size: 24px;
+  font-family: 'Fira Sans', sans-serif;
+  border-radius: 16px;
+  margin: 10px ;
+}
+
+#scores-display {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.player-tag {
+  font-weight: bold;
+}
+
+#results {
+  width: 180px;
+}
+
+#round-counter {
+  padding-bottom: 7px;
+}
+
+#player-score, #computer-score {
+  font-weight: normal;
 }

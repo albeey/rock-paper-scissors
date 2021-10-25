@@ -6,25 +6,44 @@
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@600;900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
   <script src="script.js" defer></script>
 </head>
 <body>
   <div id="header">
     <p class="title">Rock, Paper, Scissors</p>
-    <p class="subtitle">Best of 5 wins!</p>
+    <p>Best of 5 wins!</p>
   </div>
 
-  <button class="option">Rock</button>
-  <button class="option">Paper</button>
-  <button class="option">Scissors</button>
+  <div id="content">
+    <div id="game-options">
+      <button class="option">Rock</button>
+      <button class="option">Paper</button>
+      <button class="option">Scissors</button>
+    </div>
 
-  <div id="display">
-    <div id="round">Round 0/5</div>
-    <div id="results">Pick an option to start!</div>
-    <div id="player-score">Player: 0</div>
-    <div id="computer-score">Computer: 0</div>
+    <div id="display">
+      <p class="result-title">Score</p>
+
+      <div id="scores-display">
+        <div class="player-tag">
+          <p>Player:</p>
+          <p id="player-score">0</p>
+        </div>
+
+        <div id="results">
+          <p id="round-counter">Round 0/5</p>
+          <p id="round-results">Pick an option to start!</p>
+        </div>
+
+        <div class="player-tag">
+          <p>Computer:</p>
+          <p id="computer-score">0</p>
+        </div>
+      </div>
+    </div>
   </div>
+  
 </body>
 </html>
