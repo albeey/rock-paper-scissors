@@ -45,18 +45,21 @@ body {
   margin: 10px ;
 }
 
-#scores-display {
+.display {
   display: flex;
-  justify-content: space-around;
   align-items: center;
+}
+
+.player, .computer {
+  flex: 1;
+}
+
+.round {
+  flex: 2;
 }
 
 .player-tag {
   font-weight: bold;
-}
-
-#results {
-  width: 180px;
 }
 
 #round-counter {
