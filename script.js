@@ -1,5 +1,5 @@
 const TOTAL_ROUNDS = 5;
-let currentRound = 0;
+let currentRound = 0
 
 let playerScore = 0;
 let computerScore = 0;
