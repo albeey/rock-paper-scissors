@@ -1,3 +1,35 @@
+const TOTAL_ROUNDS = 5;
+let currentRound = 0;
+
+let playerScore = 0;
+let computerScore = 0;
+
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissors = document.querySelector("#scissors");
+
+rock.addEventListener("click", game);
+paper.addEventListener("click", game);
+scissors.addEventListener("click", game);
+
+function game() {
+    currentRound++;
+    updateRound(currentRound);
+
+    const userChoice = this.textContent;
+    const roundResult = playRound(userChoice, computerPlay());
+    updateResults(roundResult)
+
+    const roundWinner = getRoundWinner(roundResult);
+    
+    // Update Score
+    if (roundWinner === "player") playerScore++;
+    if (roundWinner === "computer") computerScore++;
+    updateScores(playerScore, computerScore);
+
+    if (currentRound === TOTAL_ROUNDS) alert(getWinner(playerScore, computerScore));
+}
+
 function computerPlay() {
   const options = ["Rock", "Paper", "Scissors"];
   return options[Math.floor(Math.random() * options.length)];
@@ -57,30 +89,3 @@ function updateScores(playerScore, computerScore){
   player.textContent = `Player: ${playerScore}`;
   computer.textContent = `Computer: ${computerScore}`;
 }
-
-const TOTAL_ROUNDS = 5;
-let currentRound = 0;
-
-let playerScore = 0;
-let computerScore = 0;
-
-const optionButtons = document.querySelectorAll(".option");
-optionButtons.forEach(button => {
-  button.addEventListener("click", () => {
-    currentRound++;
-    updateRound(currentRound);
-
-    const userChoice = button.textContent;
-    const roundResult = playRound(userChoice, computerPlay());
-    updateResults(roundResult)
-
-    const roundWinner = getRoundWinner(roundResult);
-    
-    // Update Score
-    if (roundWinner === "player") playerScore++;
-    if (roundWinner === "computer") computerScore++;
-    updateScores(playerScore, computerScore);
-
-    if (currentRound === TOTAL_ROUNDS) alert(getWinner(playerScore, computerScore));
-  });
-});
