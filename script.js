@@ -13,13 +13,35 @@ function game() {
     updateRound();
 
     const userChoice = this.getAttribute("name");
-    const roundResult = playRound(userChoice, computerPlay());
+    const computerChoice = computerPlay();
+    const roundResult = playRound(userChoice, computerChoice);
+
+    // show computers choice
+    displayComputerChoice(computerChoice)
+
     updateResults(roundResult)
 
     const roundWinner = getRoundWinner(roundResult);
     updateScores(roundWinner);
 
     if (currentRound === TOTAL_ROUNDS) console.log(gameOver(playerScore, computerScore));
+}
+
+function displayComputerChoice(computerChoice) {
+  const container = document.querySelector("#computer-choice");
+  container.innerHTML = "";
+
+  // <p> element
+  const pElement = document.createElement("p")
+  pElement.textContent = "Computer: ";
+  container.appendChild(pElement);
+
+  // <img>
+  const imgElement = document.createElement("img");
+  imgElement.classList.add("computer-play-img")
+  imgElement.src = `images/${computerChoice.toLowerCase()}.png`
+  imgElement.alt = `computer chose ${computerChoice}`;
+  container.appendChild(imgElement);
 }
 
 function updateRound() {
