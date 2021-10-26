@@ -15,8 +15,6 @@ function game() {
     const userChoice = this.getAttribute("name");
     const computerChoice = computerPlay();
     const roundResult = playRound(userChoice, computerChoice);
-
-    // show computers choice
     displayComputerChoice(computerChoice)
 
     updateResults(roundResult)
@@ -24,7 +22,7 @@ function game() {
     const roundWinner = getRoundWinner(roundResult);
     updateScores(roundWinner);
 
-    if (currentRound === TOTAL_ROUNDS) console.log(gameOver(playerScore, computerScore));
+    if (currentRound === TOTAL_ROUNDS) gameOver();
 }
 
 function displayComputerChoice(computerChoice) {
@@ -93,12 +91,41 @@ function updateScores(roundWinner){
   computer.textContent = computerScore;
 }
 
-function gameOver(playerScore, computerScore) {
+function gameOver() {
+  // Show modal
+  const modal = document.querySelector("#modal");
+  modal.style.display = "block";
+
+  const modalContent = document.querySelector(".modal-content");
+
+  const message = document.createElement("p");
+  const result = document.createElement("p");
+  const score = document.createElement("p");
+
+  message.classList.add("message");
+  result.classList.add("result");
+  score.classList.add("final-score");
+
+  // Get winner
   if (playerScore > computerScore) {
-    return "YOU WIN!"
+    message.textContent = "Congratulations!";
+    result.textContent = "You won!";
   } else if (computerScore > playerScore) {
-    return "YOU LOSE"
+    message.textContent = "Better luck next time!";
+    result.textContent = "You lost";
   } else {
-    return "IT'S A TIE"
+    message.textContent = "Try again!";
+    result.textContent = "It's a tie";
   }
+  score.textContent = `Player: ${playerScore} - Computer: ${computerScore}`;
+
+  const playAgain = document.createElement("button");
+  playAgain.textContent = "Play Again";
+  playAgain.classList.add("play-again");
+
+  playAgain.addEventListener("click", () => {
+    location.reload();
+  });
+
+  [message, result, score, playAgain].forEach(ele => modalContent.appendChild(ele));
 }
